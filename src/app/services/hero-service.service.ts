@@ -12,9 +12,29 @@ export class HeroService {
 
   constructor(private http: Http) {}
 
+  getCount(): Promise<number> {
+    return this.http.get(this.heroServiceUrl + '/count')
+    .toPromise()
+    .then(response => response.json() as number)
+    .catch(this.handleError);
+  }
+
   getHeroes(): Promise<Hero[]> {
-    // return Promise.resolve(HEROES);
     return this.http.get(this.heroServiceUrl)
+    .toPromise()
+    .then(response => response.json() as Hero[])
+    .catch(this.handleError);
+  }
+
+  getHeroesStartLength(start: number, length: number): Promise<Hero[]> {
+    return this.http.get(this.heroServiceUrl + '/' + start + '/' + length)
+    .toPromise()
+    .then(response => response.json() as Hero[])
+    .catch(this.handleError);
+  }
+
+  getHeroesBest(): Promise<Hero[]> {
+    return this.http.get(this.heroServiceUrl + '/best')
     .toPromise()
     .then(response => response.json() as Hero[])
     .catch(this.handleError);
