@@ -36,6 +36,7 @@ export class HeroesComponent implements OnInit {
 
   onSelectRange(page): void {
     this.selectedRangeStart = page;
+    this.selectedHero = null;
 
     this.heroService
       .getHeroesStartLength(page, this.rangeLength)

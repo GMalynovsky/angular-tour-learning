@@ -1,4 +1,24 @@
 <h2>My heroes</h2>
+<div class="heroesContainer">
+  <div>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+    </ul>
+  </div>
+
+  <br>
+
+  <div *ngIf="selectedHero" class="selectedHeroBox">
+    <h2>
+      {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+</div>
+
+<br>
 
 <div class="paginatorContainer">
   <ul class="pages">
@@ -6,21 +26,4 @@
       [{{ page + 1 }} - {{ page + 10 }}]
     </li>
   </ul>
-</div>
-
-<br>
-
-<div class="heroesListContainer">
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
-  </ul>
-</div>
-
-<div *ngIf="selectedHero" class="selectedHeroBox">
-  <h2>
-    {{selectedHero.name | uppercase}} is my hero
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
 </div>

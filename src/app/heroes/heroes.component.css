@@ -3,14 +3,6 @@
   color: white;
 }
 
-.heroes{
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 30%;
-  float: left;
-}
-
 .heroes li{
   cursor: pointer;
   position: relative;
@@ -54,29 +46,32 @@
   border-radius: 4px 0 0 4px;
 }
 
+.heroes{
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 30%;
+  display: table-cell;
+}
+
 .selectedHeroBox{
-  width: 40%;
-  display:inline-block;
-  margin-right: -4px;
-  box-sizing: border-box;
+  display: table-cell;
   position: relative;
-  top: 50px;
-  left: 40px;
+  left: 50px;
+}
+
+.heroesContainer{
+  float: none;
+  display: table;
 }
 
 .paginatorContainer{
-  clear: left;
-  margin-bottom: 150px;
-}
-
-.heroesListContainer{
-  position: relative;
-  top: 50px;
+  width: 100%;
 }
 
 .pages{
   list-style-type: none;
-
+  float: none;
 }
 
 .pages li{
