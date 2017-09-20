@@ -1,0 +1,38 @@
+<div style="margin: 20px 20px;;">
+  <input type="search" [(ngModel)]="searchString" (keydown)="pressedEnter($event)">
+  <input type="submit" (click)="goSearch()" value="Search!" [disabled]="!isSearchEnabled">
+</div>
+
+<h2>Found {{ occurensesFound }} occurenses.</h2>
+<div class="heroesContainer">
+  <div>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+    </ul>
+  </div>
+
+  <br>
+
+  <div *ngIf="selectedHero" class="selectedHeroBox">
+    <h2>
+      {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+</div>
+
+<br>
+
+<div class="paginatorContainer">
+  <ul class="pages">
+    <li *ngFor="let page of pages" (click)="onSelectRange(page)" [class.selected]="page === selectedRangeStart">
+      [ {{ page + 1 }} -
+      <span *ngIf="occurensesFound >= (page + rangeLength); then notEnd; else overflow">{{ page + rangeLength }}</span>
+      <ng-template #notEnd>{{ page + rangeLength }}</ng-template>
+      <ng-template #overflow>{{ occurensesFound }}</ng-template>
+      ]
+    </li>
+  </ul>
+</div>

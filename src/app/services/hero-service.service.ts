@@ -19,6 +19,13 @@ export class HeroService {
     .catch(this.handleError);
   }
 
+  getSearchCount(search: string): Promise<number> {
+    return this.http.get(this.heroServiceUrl + '/count/' + search)
+    .toPromise()
+    .then(response => response.json() as number)
+    .catch(this.handleError);
+  }
+
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroServiceUrl)
     .toPromise()
@@ -28,6 +35,13 @@ export class HeroService {
 
   getHeroesStartLength(start: number, length: number): Promise<Hero[]> {
     return this.http.get(this.heroServiceUrl + '/' + start + '/' + length)
+    .toPromise()
+    .then(response => response.json() as Hero[])
+    .catch(this.handleError);
+  }
+
+  getSearchStartLength(start: number, length: number, search: string): Promise<Hero[]> {
+    return this.http.get(this.heroServiceUrl + '/' + start + '/' + length + '/' + search)
     .toPromise()
     .then(response => response.json() as Hero[])
     .catch(this.handleError);
@@ -46,17 +60,9 @@ export class HeroService {
   }
 
   getHero(id: number): Promise<Hero> {
-    // return this.getHeroes().then(heroes => heroes.find(hero => hero.id === id));
     return this.http.get(this.heroServiceUrl + '/' + id)
     .toPromise()
     .then(response => response.json() as Hero)
     .catch(this.handleError);
-  }
-
-  getHeroesSlowly(): Promise<Hero[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getHeroes()), 2000);
-    });
   }
 }

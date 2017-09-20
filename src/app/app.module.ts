@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 import { HeroService } from './services/hero-service.service';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeroService } from './services/hero-service.service';
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
