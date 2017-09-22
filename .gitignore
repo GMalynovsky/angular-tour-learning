@@ -44,3 +44,4 @@ Thumbs.db
 /.vs/VSWorkspaceState.json
 /.vs/slnx.sqlite
 /.vs/angular-tour-of-heroes/v15/*.suo
+/dist
